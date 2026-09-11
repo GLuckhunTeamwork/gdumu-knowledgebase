@@ -1,0 +1,12 @@
+{
+  "name": "gdu-knowledge-base",
+  "image": "mcr.microsoft.com/devcontainers/base:alpine",
+  "runArgs": ["--name=gdu-knowledge-base"],
+  "customizations": {
+    "vscode": {
+      "extensions": ["eamodio.gitlens", "timonwong.shellcheck", "amazonwebservices.aws-toolkit-vscode"]
+    }
+  },
+  "postCreateCommand": "apk update && apk add git bash curl nodejs npm && npm add -D vitepress@next",
+  "remoteUser": "root"
+}

@@ -14,17 +14,20 @@ hero:
 features:
   - icon: ☁️
     title: Cloud Infrastructure
-    details: AWS 
-    link: /aws/index.md
-  - title: Windows
-    details: Windows Information
-    link: /windows/index.md
-  - title: Linux
-    details: Linux findings
-    link: /linux/index.md
-  - title: TIL
-    details: Things we've learned
-    link: /til/index.md
+    details: AWS architecture patterns, EC2 recovery, and cloud configurations.
+    link: /aws/
+  - icon: 🪟
+    title: Windows Administration
+    details: Windows Server guides, DNS updates, and RDP troubleshooting.
+    link: /windows/
+  - icon: 🐧
+    title: Linux Systems
+    details: Linux administration tools, bash scripts, and system findings.
+    link: /linux/
+  - icon: 💡
+    title: Today I Learned (TIL)
+    details: Quick technical findings, CLI tricks, and daily operational notes.
+    link: /til/
 
 ---
 

@@ -3,12 +3,12 @@
 layout: home
 
 hero:
-  name: "GDC MU"
-  text: "Knowledge base of GDU MU team"
+  name: "GDC MU 🇲🇺"
+  text: "Knowledge base"
   tagline:
   actions:
     - theme: brand
-      text: View docs
+      text: Get started
       link: /what-is-this
 
 features:

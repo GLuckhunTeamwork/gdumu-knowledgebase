@@ -15,18 +15,73 @@ export default defineConfig({
       { text: 'Windows', link: '/windows/' },
       { text: 'TIL 💡', link: '/til/' },
     ],
-    sidebar: generateSidebar({
-      documentRootPath: '/docs',
-      useFolderTitleFromIndexFile: true,
-      useFolderLinkFromIndexFile: true,
-      useTitleFromFileHeading: true,
-      useTitleFromFrontmatter: true,
-      hyphenToSpace: true,
-      capitalizeFirst: true,
-      collapseDepth: 2,
-      // Regex patterns to exclude public and .vitepress folders
-      excludePattern: ['public', '\\.vitepress']
-    }),
+
+    // Left sidebar navigation
+    sidebar: [
+      {
+        text: 'Getting started',
+        items: [
+          { text: 'What is this?', link: 'what-is-this'}
+        ]
+      },
+      {
+        text: 'AWS Cloud',
+        collapsed: false,
+        items: [
+          { text: 'EC2 Boot Recovery', link: '/aws/ec2-boot-recovery/ec2-boot-recovery' },
+        ]
+      },
+      {
+        text: 'Windows Administration',
+        collapsed: false,
+        items: [
+          {
+            text: 'Overview',
+            link: '/windows/'
+          },
+          { text: 'DNS Server Configuration', link: '/windows/changing-dns/windows-dns-change' },
+          {
+            text: 'Patching',
+            collapsed: false,
+            items: [
+              {
+                text: 'Overview',
+                link: '/windows/patching/'
+              },
+            ]
+          },
+        ]
+      },
+      {
+        text: 'Linux',
+        collapsed: false,
+        items: [
+          {
+            text: 'Overview',
+            link: '/linux/'
+          },
+          {
+            text: 'Patching',
+            collapsed: false,
+            items: [
+              {
+                text: 'Overview',
+                link: '/linux/patching/'
+              },
+            ]
+          }
+        ]
+      },
+      {
+        text: 'TIL',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/til/' },
+        ]
+      },
+    ],
+
+    // Link to your actual private organization repository
     socialLinks: [
       { icon: 'github', link: 'https://github.com/raifcoonjah-tw/gdumu-knowledge-base-test' }
     ]

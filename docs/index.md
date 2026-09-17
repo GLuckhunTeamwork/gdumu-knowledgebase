@@ -12,8 +12,10 @@ hero:
       link: /what-is-this
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - icon: ☁️
+    title: Cloud Infrastructure
+    details: AWS & Azure architecture patterns, recovery procedures, and IAM security configurations.
+    link: /aws/ec2-boot-recovery
   - title: Feature B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C

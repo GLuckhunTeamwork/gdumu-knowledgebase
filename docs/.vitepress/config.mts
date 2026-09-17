@@ -13,7 +13,7 @@ export default defineConfig({
     // Navigation bar (top right)
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'AWS', link: '/aws/' },
+      { text: 'AWS', link: '/aws/ec2-boot-recovery/ec2-boot-recovery' },
       { text: 'Linux', link: '/linux/' },
       { text: 'Windows', link: '/windows/' },
       { text: 'TIL', link: '/til/' },
@@ -39,6 +39,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Overview', link: '/windows/' },
+          { text: 'DNS Server Configuration', link: '/windows/changing-dns/windows-dns-change' }
         ]
       },
       {

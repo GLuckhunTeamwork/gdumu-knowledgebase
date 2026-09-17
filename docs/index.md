@@ -15,7 +15,7 @@ features:
   - icon: ☁️
     title: Cloud Infrastructure
     details: AWS & Azure architecture patterns, recovery procedures, and IAM security configurations.
-    link: /aws/ec2-boot-recovery
+    link: /aws/ec2-boot-recovery/ec2-boot-recovery
   - title: Feature B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C

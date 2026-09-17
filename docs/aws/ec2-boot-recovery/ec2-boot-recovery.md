@@ -7,96 +7,29 @@
 
 Status: **W** = Writing in progress, **C** = for Comment, **A** = for **A**pproval, **V** = Validated, **O** = Obsolete
 
-**DOCUMENT VALIDATION**
+# Table of Contents
 
-| Action     | Date     | Name           | Role |
-|------------|----------|----------------|------|
-| Writing    | 27/08/26 | Girish Luckhun | Role |
-| Control    | 00/00/00 | NAME fn        | Role |
-| Validation | 00/00/00 | NAME fn        | Role |
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+- [Server Setup](#server-setup)
+  - [Initial Environment State](#initial-environment-state)
+  - [Target Server Failure](#target-server-failure)
+- [Recovery Procedures](#recovery-procedures)
+  - [Automated Repair via AWS EC2Rescue](#automated-repair-via-aws-ec2rescue)
+  - [Manual Offline Repair via DISM \& SFC (CLI)](#manual-offline-repair-via-dism--sfc-cli)
+    - [Volume mount on Server\_B](#volume-mount-on-server_b)
+    - [Inspect Update Health](#inspect-update-health)
+    - [Repair System Image Store (DISM)](#repair-system-image-store-dism)
+    - [Repair System Binaries (SFC Scan)](#repair-system-binaries-sfc-scan)
+    - [Dismount \& Volume Reattachment](#dismount--volume-reattachment)
+  - [Rebuild a New Instance](#rebuild-a-new-instance)
+    - [Detach Data Volumes from the Failed Instance](#detach-data-volumes-from-the-failed-instance)
+    - [Launch New Instance](#launch-new-instance)
+    - [Attach Data Volumes](#attach-data-volumes)
+    - [Mount Disks \& Verify](#mount-disks--verify)
+    - [Reconfigure Active Directory](#reconfigure-active-directory)
+- [References](#references)
 
-**CLASSIFICATION and DISTRIBUTION**
-
-<table style="width:82%;">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 21%" />
-<col style="width: 20%" />
-<col style="width: 22%" />
-</colgroup>
-<tbody>
-<tr>
-<td style="text-align: center;"><p>☐</p>
-<p>Public<br />
-(for everyone)</p></td>
-<td style="text-align: center;"><p>☒</p>
-<p>Internal</p>
-<p>(for company)</p></td>
-<td style="text-align: center;"><p>☐</p>
-<p>Restricted<br />
-(for a team)</p></td>
-<td style="text-align: center;"><p>☐</p>
-<p>Confidential<br />
-(for listed people)</p></td>
-</tr>
-<tr>
-<td colspan="4" style="text-align: center;">☐ Contains personal information in the document body</td>
-</tr>
-</tbody>
-</table>
-
-*\
-Internal: TeamWork internal release only*
-
-*Restricted: limited to identified stakeholders*
-
-*Confidential:* *distribution limited to a list of named persons + specific protection mechanism*
-
-**Distribution list**
-
-*To define if Restricted or Confidential document*
-
-# Table of content
-
-[1 Introduction [3](#introduction)](#introduction)
-
-[2 Server Setup [4](#server-setup)](#server-setup)
-
-[2.1 Initial Environment State [4](#initial-environment-state)](#initial-environment-state)
-
-[2.2 Target Server Failure [4](#target-server-failure)](#target-server-failure)
-
-[3 Recovery [5](#recovery-procedures)](#recovery-procedures)
-
-[3.1 Automated Repair via AWS EC2Rescue [5](#automated-repair-via-aws-ec2rescue)](#automated-repair-via-aws-ec2rescue)
-
-[3.2 Manual Offline Repair via DISM & SFC (CLI) [8](#manual-offline-repair-via-dism-sfc-cli)](#manual-offline-repair-via-dism-sfc-cli)
-
-[3.2.1 Volume mount on Server_B [8](#volume-mount-on-server_b)](#volume-mount-on-server_b)
-
-[3.2.2 Inspect Update Health [8](#inspect-update-health)](#inspect-update-health)
-
-[3.2.3 Repair System Image Store (DISM) [8](#repair-system-image-store-dism)](#repair-system-image-store-dism)
-
-[3.2.4 Repair System Binaries (SFC Scan) [9](#repair-system-binaries-sfc-scan)](#repair-system-binaries-sfc-scan)
-
-[3.2.5 Dismount & Volume Reattachment [9](#dismount-volume-reattachment)](#dismount-volume-reattachment)
-
-[3.3 Rebuild a New Instance [9](#rebuild-a-new-instance)](#rebuild-a-new-instance)
-
-[3.3.1 Detach Data Volumes from the Failed Instance [9](#detach-data-volumes-from-the-failed-instance)](#detach-data-volumes-from-the-failed-instance)
-
-[3.3.2 Launch New Instance [9](#launch-new-instance)](#launch-new-instance)
-
-[3.3.3 Attach Data Volumes [9](#attach-data-volumes)](#attach-data-volumes)
-
-[3.3.4 Mount Disks & Verify [9](#mount-disks-verify)](#mount-disks-verify)
-
-[3.3.5 Reconfigure Active Directory [10](#reconfigure-active-directory)](#reconfigure-active-directory)
-
-[4 References [11](#references)](#references)
-
-**\**
 
 # Introduction
 

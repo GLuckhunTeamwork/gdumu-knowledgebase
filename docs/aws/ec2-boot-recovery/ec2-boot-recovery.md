@@ -1,3 +1,5 @@
+# EC2 Boot Recovery
+
 **DOCUMENT HISTORY**
 
 | Version | Date     | Name           | Version purpose | Status |
@@ -7,9 +9,10 @@
 
 Status: **W** = Writing in progress, **C** = for Comment, **A** = for **A**pproval, **V** = Validated, **O** = Obsolete
 
-# Table of Contents
+## Table of Contents
 
-- [Table of Contents](#table-of-contents)
+- [EC2 Boot Recovery](#ec2-boot-recovery)
+  - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Server Setup](#server-setup)
   - [Initial Environment State](#initial-environment-state)

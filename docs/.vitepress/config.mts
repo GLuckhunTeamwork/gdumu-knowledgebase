@@ -31,7 +31,7 @@ export default defineConfig({
         text: 'AWS Cloud',
         collapsed: false,
         items: [
-          { text: 'EC2 Boot Recovery', link: '/aws/ec2-boot-recovery' },
+          { text: 'EC2 Boot Recovery', link: '/aws/ec2-boot-recovery/ec2-boot-recovery' },
         ]
       },
       {

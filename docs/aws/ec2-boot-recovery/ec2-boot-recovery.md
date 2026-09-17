@@ -112,15 +112,15 @@ Two functioning EC2 instances are provisioned in the same Availability Zone:
 
 - **Server_B:** Helper/Rescue Server (The healthy instance used for offline repair)
 
-<img src="./public/media/media/image1.png" style="width:6.49583in;height:1.76111in" />
+<img src="./images/image1.png" style="width:6.49583in;height:1.76111in" />
 
 ## Target Server Failure
 
 Intentionally corrupt the boot path configuration on **Server_A** so that the Instance Status Check as **2/3 checks passed.**
 
-<img src="./public/media/media/image2.png" style="width:4.38in;height:1.25912in" />
+<img src="./images/image2.png" style="width:4.38in;height:1.25912in" />
 
-<img src="./public/media/media/image3.png" style="width:4.39333in;height:2.85656in" />
+<img src="./images/image3.png" style="width:4.39333in;height:2.85656in" />
 
 # Recovery Procedures
 
@@ -136,13 +136,13 @@ The file can be downloaded here : <u>https://s3.amazonaws.com/ec2rescue/windows
 
     Navigate to **Volumes**, select the root volume (/dev/sda1 or /dev/xvda), and click **Actions \> Detach volume**.
 
-    <img src="./public/media/media/image4.png" style="width:3.81583in;height:2.17389in" />
+    <img src="./images/image4.png" style="width:3.81583in;height:2.17389in" />
 
 2.  Mount Volume to Helper Instance:
 
     Attach the volume to **Server_B** as a secondary disk
 
-<img src="./public/media/media/image4.png" style="width:4.54667in;height:2.59025in" />
+<img src="./images/image4.png" style="width:4.54667in;height:2.59025in" />
 
 3.  Bring Disk Online:
 
@@ -150,11 +150,11 @@ The file can be downloaded here : <u>https://s3.amazonaws.com/ec2rescue/windows
 
     Open **Disk Management** (diskmgmt.msc), locate the newly attached disk, right-click, and select **Online**.
 
-    <img src="./public/media/media/image5.png" style="width:3.94667in;height:1.58474in" />
+    <img src="./images/image5.png" style="width:3.94667in;height:1.58474in" />
 
 Once mounted, note the assigned drive letter (typically D:):
 
-<img src="./public/media/media/image6.png" style="width:4.25333in;height:1.37958in" />
+<img src="./images/image6.png" style="width:4.25333in;height:1.37958in" />
 
 4.  Execute EC2Rescue Diagnostics:
 
@@ -162,19 +162,19 @@ Once mounted, note the assigned drive letter (typically D:):
 
     Extract the ZIP package and launch EC2Rescue.exe
 
-<img src="./public/media/media/image7.png" style="width:3.70917in;height:1.55243in" />
+<img src="./images/image7.png" style="width:3.70917in;height:1.55243in" />
 
 Select **Offline Instance** as the operational mode.
 
-<img src="./public/media/media/image8.png" style="width:3.55333in;height:2.69976in" />
+<img src="./images/image8.png" style="width:3.55333in;height:2.69976in" />
 
 EC2Rescue will automatically detects target volume D:
 
-<img src="./public/media/media/image9.png" style="width:3.81333in;height:2.80721in" />
+<img src="./images/image9.png" style="width:3.81333in;height:2.80721in" />
 
 Click **Diagnose and Rescue**.
 
-<img src="./public/media/media/image10.png" style="width:3.82214in;height:2.91625in" />
+<img src="./images/image10.png" style="width:3.82214in;height:2.91625in" />
 
 Select **Fix Boot Issues** and **Restore Registry from Last Known Good Configuration**, then click **Next** to apply repairs.
 
@@ -186,7 +186,7 @@ Select **Fix Boot Issues** and **Restore Registry from Last Known Good Configura
 
     **Re-attach** the volume back to **Server_A**.
 
-    <img src="./public/media/media/image11.png" style="width:3.62in;height:2.46597in" />
+    <img src="./images/image11.png" style="width:3.62in;height:2.46597in" />
 
 Ensure the device name is set to the original root block device path (/dev/sda1 or /dev/xvda).
 

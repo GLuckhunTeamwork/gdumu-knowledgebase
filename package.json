@@ -1,0 +1,19 @@
+{
+  "name": "gdumu-knowledge-base-test",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vitepress-sidebar": "^1.40.0",
+    "vue": "^3.5.42"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.11.1",
+    "rss-parser": "^3.13.0"
+  }
+}

@@ -14,6 +14,7 @@ export default defineConfig({
       { text: 'Linux', link: '/linux/' },
       { text: 'Windows', link: '/windows/' },
       { text: 'TIL 💡', link: '/til/' },
+      { text: 'Feeds 📡', link: '/cloud-feeds' }
     ],
 
     // Left sidebar navigation

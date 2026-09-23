@@ -7,22 +7,25 @@ export default {
       aws: 'https://aws.amazon.com/about-aws/whats-new/recent/feed/',
       azure: 'https://azure.microsoft.com/en-us/blog/feed/',
       windows: 'https://devblogs.microsoft.com/powershell/feed/',
-      // Updated: Red Hat official RSS path
       redhat: 'https://www.redhat.com/en/rss/blog',
-      // Updated: SUSE technical blog feed
-      suse: 'https://www.suse.com/c/feed/',
-      // Updated: Ubuntu news RSS endpoint (Discourse community feed)
-      ubuntu: 'https://discourse.ubuntu.com/tag/news.rss'
+      ubuntu: 'https://discourse.ubuntu.com/tag/news.rss',
+      // Stable SUSE/openSUSE technical feed (avoids 502/500 gateway errors)
+      suse: 'https://news.opensuse.org/feed/'
     }
 
     const fetchFeed = async (url) => {
       try {
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 3500)
+
         const res = await fetch(url, {
+          signal: controller.signal,
           headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
             'Accept': 'application/rss+xml, application/xml, text/xml, */*'
           }
         })
+        clearTimeout(timeoutId)
 
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
 
@@ -74,13 +77,15 @@ export default {
       }
     }
 
-    return {
-      aws: await fetchFeed(feeds.aws),
-      azure: await fetchFeed(feeds.azure),
-      windows: await fetchFeed(feeds.windows),
-      ubuntu: await fetchFeed(feeds.ubuntu),
-      redhat: await fetchFeed(feeds.redhat),
-      suse: await fetchFeed(feeds.suse)
-    }
+    const [aws, azure, windows, redhat, ubuntu, suse] = await Promise.all([
+      fetchFeed(feeds.aws),
+      fetchFeed(feeds.azure),
+      fetchFeed(feeds.windows),
+      fetchFeed(feeds.redhat),
+      fetchFeed(feeds.ubuntu),
+      fetchFeed(feeds.suse)
+    ])
+
+    return { aws, azure, windows, redhat, ubuntu, suse }
   }
 }

@@ -1,9 +1,9 @@
 import { defineConfig } from 'vitepress'
-import { generateSidebar } from 'vitepress-sidebar'
 
 export default defineConfig({
   title: "GDUMU - Knowledge base",
   description: "Knowledge lekip GDC MU",
+  base: '/gdumu-knowledgebase/',
   themeConfig: {
     search: {
       provider: 'local'

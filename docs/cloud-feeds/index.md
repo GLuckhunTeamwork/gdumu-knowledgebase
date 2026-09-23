@@ -1,5 +1,5 @@
 ---
-title: Live Cloud RSS Feeds
+title: Live Tech & Cloud RSS Feeds
 ---
 
 <script setup>
@@ -19,9 +19,9 @@ function formatDate(dateStr) {
 }
 </script>
 
-# Live Cloud RSS Feeds
+# Live Tech & Cloud RSS Feeds
 
-Stay updated with official architecture updates, service announcements, and release notes.
+Stay updated with official architecture updates, system announcements, and release notes.
 
 ---
 
@@ -43,7 +43,7 @@ Stay updated with official architecture updates, service announcements, and rele
 ## 🔷 Azure Updates
 
 <div class="rss-container">
-  <h3>Azure Service Updates</h3>
+  <h3>Azure Blog Updates</h3>
   <ul v-if="data.azure && data.azure.length" class="feed-list">
     <li v-for="(item, index) in data.azure" :key="index" class="feed-item">
       <a :href="item.link" target="_blank" rel="noopener">{{ item.title }}</a>
@@ -51,6 +51,64 @@ Stay updated with official architecture updates, service announcements, and rele
     </li>
   </ul>
   <p v-else class="error">Unable to fetch Azure updates.</p>
+</div>
+
+---
+
+## 🟠 Ubuntu Updates
+
+<div class="rss-container">
+  <h3>Ubuntu Official News</h3>
+  <ul v-if="data.ubuntu && data.ubuntu.length" class="feed-list">
+    <li v-for="(item, index) in data.ubuntu" :key="index" class="feed-item">
+      <a :href="item.link" target="_blank" rel="noopener">{{ item.title }}</a>
+      <span class="feed-date" v-if="item.pubDate"> — {{ formatDate(item.pubDate) }}</span>
+    </li>
+  </ul>
+  <p v-else class="error">Unable to fetch Ubuntu updates.</p>
+</div>
+
+---
+
+## 🔴 Red Hat Updates
+
+<div class="rss-container">
+  <h3>Red Hat Technical Blog</h3>
+  <ul v-if="data.redhat && data.redhat.length" class="feed-list">
+    <li v-for="(item, index) in data.redhat" :key="index" class="feed-item">
+      <a :href="item.link" target="_blank" rel="noopener">{{ item.title }}</a>
+      <span class="feed-date" v-if="item.pubDate"> — {{ formatDate(item.pubDate) }}</span>
+    </li>
+  </ul>
+  <p v-else class="error">Unable to fetch Red Hat updates.</p>
+</div>
+
+---
+
+## 🟢 SUSE Updates
+
+<div class="rss-container">
+  <h3>SUSE Engineering Blog</h3>
+  <ul v-if="data.suse && data.suse.length" class="feed-list">
+    <li v-for="(item, index) in data.suse" :key="index" class="feed-item">
+      <a :href="item.link" target="_blank" rel="noopener">{{ item.title }}</a>
+      <span class="feed-date" v-if="item.pubDate"> — {{ formatDate(item.pubDate) }}</span>
+    </li>
+  </ul>
+  <p v-else class="error">Unable to fetch SUSE updates.</p>
+</div>
+
+## 🪟 Windows Updates
+
+<div class="rss-container">
+  <h3>PowerShell & Windows Engineering</h3>
+  <ul v-if="data.windows && data.windows.length" class="feed-list">
+    <li v-for="(item, index) in data.windows" :key="index" class="feed-item">
+      <a :href="item.link" target="_blank" rel="noopener">{{ item.title }}</a>
+      <span class="feed-date" v-if="item.pubDate"> — {{ formatDate(item.pubDate) }}</span>
+    </li>
+  </ul>
+  <p v-else class="error">Unable to fetch Windows updates.</p>
 </div>
 
 <style scoped>

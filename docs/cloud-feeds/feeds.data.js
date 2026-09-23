@@ -5,7 +5,14 @@ export default {
   async load() {
     const feeds = {
       aws: 'https://aws.amazon.com/about-aws/whats-new/recent/feed/',
-      azure: 'https://azure.microsoft.com/en-us/blog/feed/'
+      azure: 'https://azure.microsoft.com/en-us/blog/feed/',
+      windows: 'https://devblogs.microsoft.com/powershell/feed/',
+      // Updated: Red Hat official RSS path
+      redhat: 'https://www.redhat.com/en/rss/blog',
+      // Updated: SUSE technical blog feed
+      suse: 'https://www.suse.com/c/feed/',
+      // Updated: Ubuntu news RSS endpoint (Discourse community feed)
+      ubuntu: 'https://discourse.ubuntu.com/tag/news.rss'
     }
 
     const fetchFeed = async (url) => {
@@ -69,7 +76,11 @@ export default {
 
     return {
       aws: await fetchFeed(feeds.aws),
-      azure: await fetchFeed(feeds.azure)
+      azure: await fetchFeed(feeds.azure),
+      windows: await fetchFeed(feeds.windows),
+      ubuntu: await fetchFeed(feeds.ubuntu),
+      redhat: await fetchFeed(feeds.redhat),
+      suse: await fetchFeed(feeds.suse)
     }
   }
 }
